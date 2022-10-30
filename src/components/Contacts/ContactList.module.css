@@ -1,0 +1,32 @@
+/* .container {
+  margin: 0 auto;
+  margin-top: 2%;
+  width: 50%;
+  justify-content: center;
+  border-radius: 10px;
+} */
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3%;
+  flex-direction: column;
+}
+
+.flexItems {
+  margin: 10px;
+  padding: 20px;
+}
+
+.details {
+  width: 60px;
+  margin: 0;
+  max-width: 150px;
+}
+
+.iconDelete {
+  position: absolute;
+  margin-left: 90%;
+  cursor: pointer;
+}

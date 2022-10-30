@@ -1,0 +1,17 @@
+.cont {
+  padding: 0;
+}
+.icon {
+  margin-right: 20px;
+}
+.buttonRegister {
+  color: #1976d2;
+  margin-left: 80%;
+  background-color: white;
+}
+
+.buttonLogin {
+  margin-left: 80%;
+  color: #1976d2;
+  background-color: white;
+}
