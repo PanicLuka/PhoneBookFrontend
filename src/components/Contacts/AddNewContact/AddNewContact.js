@@ -14,11 +14,9 @@ import { useState } from 'react'
 
 import classes from './AddNewContact.module.css'
 import usePostContact from '../../../hooks/use-post-contact'
-// import useFetch from '../../../hooks/use-fetch'
 
 const AddNewContact = () => {
   const { postContact } = usePostContact()
-  // const { getCurrentContact, currentId } = useFetch()
   const [contactDetails, setContactDetail] = useState([])
   const [detailsFormIsShown, setDetailsFormIsShown] = useState(false)
 
@@ -83,7 +81,6 @@ const AddNewContact = () => {
     postContact(contactObject).then((res) => {
       setNewContactId(res.contactId)
     })
-    // getCurrentContact()
     setShowDetailsForm(true)
     setEnteredFirstName('')
     setEnteredFirstNameTouched(false)

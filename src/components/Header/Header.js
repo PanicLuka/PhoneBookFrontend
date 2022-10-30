@@ -12,6 +12,8 @@ const Header = () => {
 
   const pathname = location.pathname
 
+  const logoutButtonIsShown = localStorage.getItem('JWT')
+
   const toRegisterPage = () => {
     navigate('/register')
   }
@@ -38,7 +40,7 @@ const Header = () => {
             className={classes.buttonRegister}
             onClick={toRegisterPage}
           >
-            register
+            sign up
           </Button>
         )}
         {!isLoggedIn && pathname === '/register' && (
@@ -48,10 +50,10 @@ const Header = () => {
             className={classes.buttonLogin}
             onClick={toLoginPage}
           >
-            Login
+            sign in
           </Button>
         )}
-        {isLoggedIn && (
+        {logoutButtonIsShown && (
           <Button
             variant="contained"
             color="primary"

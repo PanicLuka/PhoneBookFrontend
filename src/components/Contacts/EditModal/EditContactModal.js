@@ -24,16 +24,14 @@ function EditContactModal({ show, data, onCloseHandler }) {
   const [enteredFirstName, setEnteredFirstName] = useState('')
   const [enteredLastName, setEnteredLastName] = useState('')
   const [enteredDetails, setEnteredDetails] = useState({})
-
   useEffect(() => {
     const copy = enteredDetails
-    data?.details.forEach((detail, index) => {
+    data.details.forEach((detail, index) => {
       index = detail.contactDetailsId
       copy['detail' + index] = { name: detail.name, value: detail.value }
       setEnteredDetails(copy)
     })
-    console.log(enteredDetails)
-  }, [show, data?.details, enteredDetails])
+  })
 
   const handleClose = () => {
     onCloseHandler()
@@ -55,7 +53,6 @@ function EditContactModal({ show, data, onCloseHandler }) {
 
     setEnteredDetails(copy)
   }
-
   return (
     <div>
       <Modal
@@ -68,49 +65,61 @@ function EditContactModal({ show, data, onCloseHandler }) {
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Edit Contact
           </Typography>
-          <TextField
-            label={'FirstName: ' + data?.firstName}
-            onChange={firstNameChangeHandler}
-            value={enteredFirstName}
-          ></TextField>
-          <TextField
-            label={'Last Name: ' + data?.lastName}
-            onChange={lastNameChangeHandler}
-            value={enteredLastName}
-          ></TextField>
-          <Button
-            className={classes.buttonStyle}
-            onClick={() =>
-              editContact(data.contactId, {
-                FirstName: enteredFirstName,
-                LastName: enteredLastName,
-              })
-            }
-          >
-            edit contact
-          </Button>
+          <div className={classes.flexContaier}>
+            <TextField
+              label={'FirstName: ' + data?.firstName}
+              onChange={firstNameChangeHandler}
+              value={enteredFirstName}
+            ></TextField>
+            <TextField
+              className={classes.items}
+              label={'Last Name: ' + data?.lastName}
+              onChange={lastNameChangeHandler}
+              value={enteredLastName}
+            ></TextField>
+
+            <Button
+              className={classes.buttonStyle}
+              onClick={() => {
+                editContact(data.contactId, {
+                  FirstName: enteredFirstName,
+                  LastName: enteredLastName,
+                })
+                setEnteredFirstName('')
+                setEnteredLastName('')
+              }}
+            >
+              edit contact
+            </Button>
+          </div>
 
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Edit Details
           </Typography>
           {data?.details.map((item, index) => (
-            <div key={item?.contactDetailsId}>
+            <div key={item?.contactDetailsId} className={classes.flexContaier}>
               <TextField
+                className={classes.items}
                 label={'Name: ' + item?.name}
                 name="name"
-                value={enteredDetails['detail' + item?.contactDetailsId]?.name}
+                defaultValue={
+                  enteredDetails['detail' + item?.contactDetailsId]?.name
+                }
                 onChange={(e) => detailChange(e, item?.contactDetailsId)}
-              ></TextField>
+              />
               <TextField
+                className={classes.items}
                 label={'Value: ' + item?.value}
                 name="value"
-                value={enteredDetails['detail' + item?.contactDetailsId]?.value}
+                defaultValue={
+                  enteredDetails['detail' + item?.contactDetailsId]?.value
+                }
                 onChange={(e) => detailChange(e, item?.contactDetailsId)}
               ></TextField>
 
               <Button
                 className={classes.buttonStyle}
-                onClick={() =>
+                onClick={() => {
                   editContactDetail(item.contactDetailsId, {
                     name:
                       enteredDetails['detail' + item.contactDetailsId]?.name,
@@ -118,7 +127,7 @@ function EditContactModal({ show, data, onCloseHandler }) {
                       enteredDetails['detail' + item.contactDetailsId]?.value,
                     contactId: data.contactId,
                   })
-                }
+                }}
               >
                 edit detail
               </Button>

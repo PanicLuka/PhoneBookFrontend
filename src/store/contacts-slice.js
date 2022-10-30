@@ -7,8 +7,20 @@ const contactsSlice = createSlice({
     contactListIsShown: true,
     addNewContactFormIsShown: false,
     isLoggedIn: false,
+    isUpdated: false,
+    isCreated: false,
+    isDeleted: false,
   },
   reducers: {
+    updateSnackBar(state) {
+      state.isUpdated = true
+    },
+    isCreated(state) {
+      state.isCreated = true
+    },
+    isDeleted(state) {
+      state.isDeleted = !state.isDeleted
+    },
     setAllContacts(state, action) {
       state.contactItems = action.payload
     },
@@ -19,7 +31,6 @@ const contactsSlice = createSlice({
     login(state) {
       if (localStorage.getItem('JWT')) {
         state.isLoggedIn = true
-        console.log(state.isLoggedIn)
       }
     },
     toggleAddForm(state) {
@@ -29,9 +40,6 @@ const contactsSlice = createSlice({
     toggleContacts(state) {
       state.contactListIsShown = true
       state.addNewContactFormIsShown = false
-    },
-    addNewContactItem(state, action) {
-      console.log('works')
     },
     removeFromContacts(state, action) {
       state.contactItems.splice(action.payload, 1)

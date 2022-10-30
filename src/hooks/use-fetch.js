@@ -1,9 +1,10 @@
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { contactsActions } from '../store/contacts-slice'
 
 const useFetch = () => {
   const dispatch = useDispatch()
+  const contacts = useSelector((state) => state.contacts.contactItems)
   const contactsURL = 'http://localhost:5000/api/contacts'
   const currentContactURL = 'http://localhost:5000/api/contacts/current'
 

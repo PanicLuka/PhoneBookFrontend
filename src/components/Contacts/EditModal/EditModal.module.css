@@ -4,3 +4,15 @@
   background-color: #1976d2;
   color: white;
 }
+
+.flexContaier {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 3%;
+  flex-direction: column;
+}
+
+.items {
+  padding-top: 2%;
+}

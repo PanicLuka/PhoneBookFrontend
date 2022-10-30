@@ -15,6 +15,7 @@ const useDelete = () => {
       if (!response.ok) {
         throw new Error('DELETE failed!')
       }
+      dispatch(contactsActions.isDeleted())
       dispatch(contactsActions.removeFromContacts(index))
     } catch (err) {
       setError(err.message || 'Something went wrong!')

@@ -6,6 +6,8 @@ import Header from './components/Header/Header'
 import NotFoundPage from './pages/NotFoundPage'
 
 function App() {
+  const isLoggedIn = localStorage.getItem('JWT')
+
   return (
     <>
       <Header />
@@ -14,7 +16,7 @@ function App() {
           <Route path="/" element={<Navigate to="/login" />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
-          <Route path="/home" element={<HomePage />} />
+          {isLoggedIn && <Route path="/home" element={<HomePage />} />}
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>

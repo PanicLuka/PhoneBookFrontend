@@ -7,10 +7,10 @@ const ContactDetail = (props) => {
   const { postContactDetail } = usePostContact()
 
   const [enteredValueName, setEnteredValueName] = useState('')
-  const [enteredValueNameTouched, setEnteredValueNameTouched] = useState('')
+  const [enteredValueNameTouched, setEnteredValueNameTouched] = useState(false)
 
   const [enteredValue, setEnteredValue] = useState('')
-  const [enteredValueTouched, setEnteredValueTouched] = useState('')
+  const [enteredValueTouched, setEnteredValueTouched] = useState(false)
 
   const enteredValueNameIsValid = enteredValueName !== ''
   const valueNameInputIsInvalid =
@@ -48,17 +48,17 @@ const ContactDetail = (props) => {
       console.log('invalidForm')
     }
 
-    setEnteredValueName('')
-    setEnteredValueNameTouched(false)
-
-    setEnteredValue('')
-    setEnteredValueNameTouched(false)
-
     postContactDetail({
       Name: enteredValueName,
       Value: enteredValue,
       ContactId: props.id,
     })
+
+    setEnteredValueName('')
+    setEnteredValueNameTouched(false)
+
+    setEnteredValue('')
+    setEnteredValueNameTouched(false)
   }
   return (
     <div className={classes.flexContainer}>
