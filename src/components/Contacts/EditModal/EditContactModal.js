@@ -24,6 +24,7 @@ function EditContactModal({ show, data, onCloseHandler }) {
   const [enteredFirstName, setEnteredFirstName] = useState('')
   const [enteredLastName, setEnteredLastName] = useState('')
   const [enteredDetails, setEnteredDetails] = useState({})
+
   useEffect(() => {
     const copy = enteredDetails
     data.details.forEach((detail, index) => {

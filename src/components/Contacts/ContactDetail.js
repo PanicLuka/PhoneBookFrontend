@@ -58,7 +58,7 @@ const ContactDetail = (props) => {
     setEnteredValueNameTouched(false)
 
     setEnteredValue('')
-    setEnteredValueNameTouched(false)
+    setEnteredValueTouched(false)
   }
   return (
     <div className={classes.flexContainer}>

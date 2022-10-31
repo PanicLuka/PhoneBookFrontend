@@ -25,6 +25,7 @@ const Home = () => {
 
   useEffect(() => {
     getContacts()
+    // eslint-disable-next-line
   }, [])
 
   // const contactItems = useSelector((state) => state.contacts.contactItems)

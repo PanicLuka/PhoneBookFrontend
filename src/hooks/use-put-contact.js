@@ -1,13 +1,8 @@
-import { createNextState } from '@reduxjs/toolkit'
-import { useState, useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { contactsActions } from '../store/contacts-slice'
-import useFetch from './use-fetch'
+import { useState } from 'react'
 
 const useEditContact = () => {
   const editContactURL = 'http://localhost:5000/api/contacts'
   const editContactDetailURL = 'http://localhost:5000/api/contactDetails'
-  // const contacts = useSelector((state) => state.contacts.contactItems)
 
   const [error, setError] = useState(null)
 
